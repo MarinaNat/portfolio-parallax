@@ -75,14 +75,17 @@ body {
 }
 .layers__base {
 	transform: translate3d(0, calc(var(--scrollTop) / 1.6), 0);
+	background-image: url(../../img/layer-base.png);
 	z-index: 0;
 }
 
 .layers__middle {
 	transform: translate3d(0, calc(var(--scrollTop) / 2.5), 0);
+	background-image: url(../../img/layer-middle.png);
 }
 .layers__front {
 	transform: translate3d(0, calc(var(--scrollTop) / 5.7), 0);
+	background-image: url(../../img/layer-front.png);
 }
 
 .main-article {
