@@ -6,6 +6,17 @@
 	box-sizing: border-box;
 }
 
+a {
+	text-decoration: none;
+	color: var(--text);
+}
+
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
 :root {
 	--index: calc(1vw + 1vh);
 	--text: #e7e7e0;
@@ -104,7 +115,17 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	flex-direction: column;
+	padding-top: calc(var(--index) * 2.5);
+	max-width: 1200px;
 }
+
+@media screen and (min-width: 1200px) {
+	.main-article__content {
+		padding-top: 0;
+	}
+}
+
 .main-article__header {
 	text-transform: uppercase;
 	letter-spacing: calc(var(--index) / 7.8);
@@ -115,4 +136,96 @@ body {
 	opacity: 0.45;
 	font-style: calc(var(--index) * 0.75);
 	letter-spacing: calc(var(--index) / 37);
+}
+
+.gallery__grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(340px, auto));
+	gap: 15px;
+	/* max-width: 1140px; */
+	margin: 0 auto;
+	padding: calc(var(--index) / 1);
+}
+
+.gallery__grid,
+.gallery__grid * {
+	box-sizing: border-box;
+}
+
+.grid-item {
+	display: flex;
+	flex-direction: column;
+	margin: 15px 0;
+	padding: 0 15px;
+	/* width: 33%; */
+}
+
+.grid-item__inner {
+	position: relative;
+	height: 100%;
+	display: flex;
+	cursor: pointer;
+	overflow: hidden;
+}
+
+.grid-item__inner::before {
+	position: absolute;
+	content: "";
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.8);
+	opacity: 0;
+	transition: all 0.4s ease;
+	z-index: 2;
+}
+
+.grid-item__inner:hover::before {
+	opacity: 1;
+}
+
+.grid-item__img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: all 0.25s ease;
+}
+
+.grid-item__inner:hover .grid-item__img {
+	transform: scale(1.1);
+}
+
+.grid-item__desc {
+	position: absolute;
+	left: 15px;
+	bottom: 15px;
+	font-size: 18px;
+	color: var(--text);
+	overflow: hidden;
+	z-index: 3;
+}
+
+.grid-item__desc > ul {
+	display: block;
+	transform: translateY(80px);
+	transition: transform 0.25 ease;
+}
+.grid-item__desc > ul > li {
+	padding: 3px;
+}
+
+.grid-item__inner:hover .grid-item__desc > ul {
+	transform: translateY(0);
+}
+
+.grid-item__title {
+	display: flex;
+	height: 140px;
+	align-items: center;
+	text-align: center;
+	background-color: rgba(0, 0, 0, 0.3);
+	border-top-left-radius: 25px;
+	border-top-right-radius: 25px;
+	padding: 10px 20px;
 }
